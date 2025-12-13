@@ -99,10 +99,19 @@ div.csl-indent {
   <li><a href="#test-set-performance" id="toc-test-set-performance" class="nav-link" data-scroll-target="#test-set-performance">5.3.3 Test Set Performance</a></li>
   <li><a href="#confusion-matrix-1" id="toc-confusion-matrix-1" class="nav-link" data-scroll-target="#confusion-matrix-1">5.3.4 Confusion Matrix</a></li>
   <li><a href="#key-findings" id="toc-key-findings" class="nav-link" data-scroll-target="#key-findings">Key Findings</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#discussion-1" id="toc-discussion-1" class="nav-link" data-scroll-target="#discussion-1">Discussion</a>
+  <ul>
+  <li><a href="#alcohol-content-as-primary-quality-indicator" id="toc-alcohol-content-as-primary-quality-indicator" class="nav-link" data-scroll-target="#alcohol-content-as-primary-quality-indicator">Alcohol Content as Primary Quality Indicator</a></li>
+  <li><a href="#role-of-acidity-in-wine-quality" id="toc-role-of-acidity-in-wine-quality" class="nav-link" data-scroll-target="#role-of-acidity-in-wine-quality">Role of Acidity in Wine Quality</a></li>
+  <li><a href="#density-and-quality-relationships" id="toc-density-and-quality-relationships" class="nav-link" data-scroll-target="#density-and-quality-relationships">Density and Quality Relationships</a>
+  <ul class="collapse">
   <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a></li>
   <li><a href="#limitations-and-future-work" id="toc-limitations-and-future-work" class="nav-link" data-scroll-target="#limitations-and-future-work">Limitations and Future Work</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -143,7 +152,7 @@ div.csl-indent {
 
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>This project implements a Random Forest classifier to predict wine quality based on physicochemical properties. Using the Wine Quality dataset from the UCI Machine Learning Repository (6,497 samples with 11 features, reduced to 5,320 after removing duplicates), we develop a robust prediction model that leverages the ensemble learning capabilities of Random Forest. Our analysis demonstrates that Random Forest effectively handles the non-linear relationships between chemical properties and wine quality, achieving an accuracy of approximately 74.6% on the test set. The model identifies alcohol content, volatile acidity, and density as the most influential factors in determining wine quality. A limitation of this study is that it only considers Portuguese “Vinho Verde” wines, which may limit the generalizability of the model to other wine types. This work provides valuable insights for wine producers to optimize production processes and maintain consistent quality standards.</p>
+<p>This project implements a Random Forest classifier to predict wine quality based on physicochemical properties. Using the Wine Quality dataset from the UCI Machine Learning Repository (6,497 observations with 11 features, reduced to 5,320 after removing duplicates), we develop a robust prediction model that leverages the ensemble learning capabilities of Random Forest. Our analysis demonstrates that Random Forest effectively handles the non-linear relationships between chemical properties and wine quality, achieving an accuracy of approximately 74.6% on the test set. The model identifies alcohol content, volatile acidity, and density as the most influential factors in determining wine quality. A limitation of this study is that it only considers Portuguese “Vinho Verde” wines, which may limit the generalizability of the model to other wine types. This work provides valuable insights for wine producers to optimize production processes and maintain consistent quality standards.</p>
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -171,10 +180,10 @@ div.csl-indent {
 </section>
 <section id="methods" class="level2">
 <h2 class="anchored" data-anchor-id="methods">Methods</h2>
-<p>We used the Wine Quality Dataset from <span class="citation" data-cites="cortez2009modeling">(<a href="#ref-cortez2009modeling" role="doc-biblioref">Cortez et al. 2009</a>)</span>, comprising 6,490 wine samples (1,599 red, 4,891 white) with 11 physicochemical features and quality scores ranging from 3-9. After comprehensive data validation using Pandera, we trained a Random Forest classifier <span class="citation" data-cites="breiman2001random">(<a href="#ref-breiman2001random" role="doc-biblioref">Breiman 2001</a>)</span> using scikit-learn <span class="citation" data-cites="pedregosa2011scikit">(<a href="#ref-pedregosa2011scikit" role="doc-biblioref">Pedregosa et al. 2011</a>)</span>. The data was split 75/25 for training and testing, with 5-fold stratified cross-validation for model selection. Hyperparameters were optimized using grid search over number of trees (100-300), max depth (10-30, None), and minimum samples for splitting (2-10) and leaf nodes (1-4). Model performance was evaluated using accuracy, precision, recall, F1-score, and confusion matrices, with feature importance rankings to identify key wine quality predictors.</p>
+<p>We used the Wine Quality Dataset from <span class="citation" data-cites="cortez2009modeling">(<a href="#ref-cortez2009modeling" role="doc-biblioref">Cortez et al. 2009</a>)</span>, comprising 6,490 wine observations (1,599 red, 4,891 white) with 11 physicochemical features and quality scores ranging from 3-9. After comprehensive data validation using Pandera, we trained a Random Forest classifier <span class="citation" data-cites="breiman2001random">(<a href="#ref-breiman2001random" role="doc-biblioref">Breiman 2001</a>)</span> using scikit-learn <span class="citation" data-cites="pedregosa2011scikit">(<a href="#ref-pedregosa2011scikit" role="doc-biblioref">Pedregosa et al. 2011</a>)</span>. The data was split 75/25 for training and testing, with 5-fold stratified cross-validation for model selection. Hyperparameters were optimized using grid search over number of trees (100-300), max depth (10-30, None), and minimum observations for splitting (2-10) and leaf nodes (1-4). Model performance was evaluated using accuracy, precision, recall, F1-score, and confusion matrices, with feature importance rankings to identify key wine quality predictors.</p>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
-<p><strong>Dataset</strong>: Wine Quality Dataset (<span class="citation" data-cites="cortez2009modeling">Cortez et al. (<a href="#ref-cortez2009modeling" role="doc-biblioref">2009</a>)</span>) - <strong>Red wine</strong>: 1,599 samples - <strong>White wine</strong>: 4,898 samples - <strong>Subtotal</strong>: 6,497 samples - <strong>Total</strong>: 6,497 samples (5,320 after removing duplicates)</p>
+<p><strong>Dataset</strong>: Wine Quality Dataset (<span class="citation" data-cites="cortez2009modeling">Cortez et al. (<a href="#ref-cortez2009modeling" role="doc-biblioref">2009</a>)</span>) - <strong>Red wine</strong>: 1,599 observations - <strong>White wine</strong>: 4,898 observations - <strong>Subtotal</strong>: 6,497 observations - <strong>Total</strong>: 6,497 observations (5,320 after removing duplicates)</p>
 <p><strong>Features (11 physicochemical properties)</strong>: 1. Fixed acidity (g/dm³) 2. Volatile acidity (g/dm³) 3. Citric acid (g/dm³) 4. Residual sugar (g/dm³) 5. Chlorides (g/dm³) 6. Free sulfur dioxide (mg/dm³) 7. Total sulfur dioxide (mg/dm³) 8. Density (g/cm³) 9. pH 10. Sulphates (g/dm³) 11. Alcohol (% vol.)</p>
 <p><strong>Target</strong>: Quality score (3-9, originally 0-10 scale)</p>
 <p><strong>Citation</strong>: P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. Modeling wine preferences by data mining from physicochemical properties. Decision Support Systems, 47(4):547-553, 2009.</p>
@@ -212,11 +221,6 @@ div.csl-indent {
 <li>max_features</li>
 </ul></li>
 </ul></li>
-<li><strong>Model Comparison</strong>
-<ul>
-<li>Benchmark against Logistic Regression, SVM, and Gradient Boosting</li>
-<li>Validate Random Forest superiority</li>
-</ul></li>
 <li><strong>Final Evaluation</strong>
 <ul>
 <li>Test set performance</li>
@@ -230,7 +234,7 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="implementation">Implementation</h2>
 <section id="data-loading-and-preparation" class="level3">
 <h3 class="anchored" data-anchor-id="data-loading-and-preparation">1. Data Loading and Preparation</h3>
-<p>To begin our analysis, we downloaded the two wine quality datasets provided by Cortez et al.&nbsp;(2009). These files contain measurements for red and white wine samples, including physicochemical properties and expert-assigned quality scores.</p>
+<p>To begin our analysis, we downloaded the two wine quality datasets provided by Cortez et al.&nbsp;(2009). These files contain measurements for red and white wine observations, including physicochemical properties and expert-assigned quality scores.</p>
 <p>The data were downloaded using our automated script, which saves the raw files into the data/raw directory.</p>
 <p>The two datasets downloaded were:</p>
 <ul>
@@ -241,12 +245,12 @@ div.csl-indent {
 <section id="data-validation" class="level3">
 <h3 class="anchored" data-anchor-id="data-validation">1.1 Data Validation</h3>
 <p>Before proceeding with the analysis, we perform comprehensive data validation checks to ensure the quality and integrity of the dataset. Following this <a href="https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/130-data-validation.html#data-validation-checklist">Data Validation Checklist</a>, we use Pandera <span class="citation" data-cites="bantilan2020pandera">(<a href="#ref-bantilan2020pandera" role="doc-biblioref">Bantilan 2020</a>)</span>, a statistical schema validation library for Python, to systematically check data types, ranges, and constraints.</p>
-<p>We validated the raw red and white wine datasets prior to analysis by confirming correct file structure, column names, and data types, and verifying the absence of missing or empty observations. Duplicate records (1,177 rows) were removed from the combined dataset, resulting in 5,320 unique samples. All features fell within expected ranges, category levels were valid, and the target variable showed a highly imbalanced—but expected—quality distribution. Correlation checks indicated no problematic collinearity or data leakage issues.</p>
+<p>We validated the raw red and white wine datasets prior to analysis by confirming correct file structure, column names, and data types, and verifying the absence of missing or empty observations. Duplicate records (1,177 rows) were removed from the combined dataset, resulting in 5,320 unique observations. All features fell within expected ranges, category levels were valid, and the target variable showed a highly imbalanced—but expected—quality distribution. Correlation checks indicated no problematic collinearity or data leakage issues.</p>
 </section>
 <section id="exploratory-data-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="exploratory-data-analysis">2. Exploratory Data Analysis</h3>
 <p>Our exploratory analysis reveals several key insights about the wine quality dataset:</p>
-<p><strong>Quality Distribution:</strong> As shown in <a href="#fig-quality-distribution" class="quarto-xref">Figure&nbsp;1</a>, wine quality scores follow a normal distribution centered around scores 5-6, with very few wines receiving extreme ratings (3 or 9). The dataset exhibits a significant class imbalance, with medium-quality wines (scores 6-7) comprising the majority of samples. White wines show a broader distribution across quality scores compared to red wines, which are more concentrated in the 5-6 range.</p>
+<p><strong>Quality Distribution:</strong> As shown in <a href="#fig-quality-distribution" class="quarto-xref">Figure&nbsp;1</a>, wine quality scores follow a normal distribution centered around scores 5-6, with very few wines receiving extreme ratings (3 or 9). The dataset exhibits a significant class imbalance, with medium-quality wines (scores 6-7) comprising the majority of observations. White wines show a broader distribution across quality scores compared to red wines, which are more concentrated in the 5-6 range.</p>
 <p><strong>Feature-Quality Relationships:</strong> <a href="#fig-feature-correlations" class="quarto-xref">Figure&nbsp;2</a> demonstrates that alcohol content exhibits the strongest positive correlation with wine quality, suggesting that higher alcohol wines tend to receive better ratings. Conversely, volatile acidity shows the strongest negative correlation, indicating that wines with higher acetic acid levels are rated lower. Other notable positive correlates include citric acid and sulphates, while density and chlorides show negative associations with quality.</p>
 <p><strong>Feature Intercorrelations:</strong> The correlation heatmap in <a href="#fig-correlation-heatmap" class="quarto-xref">Figure&nbsp;3</a> reveals important relationships between physicochemical properties. Strong positive correlations exist between free and total sulfur dioxide, and between density and residual sugar. Alcohol shows a strong negative correlation with density, which is chemically expected. These intercorrelations suggest potential multicollinearity that may need to be addressed in our modeling approach, particularly when using linear methods.</p>
 <p>These patterns inform our modeling strategy: the class imbalance requires careful handling, the strong alcohol-quality relationship suggests it will be a key predictive feature, and the feature intercorrelations indicate that regularization techniques or tree-based methods may be particularly appropriate for this dataset.</p>
@@ -498,7 +502,7 @@ Table&nbsp;4: Random Forest performance table
 </figure>
 </div>
 </div>
-<p>Note on class-specific metrics: Some classes, particularly the very high-quality wines, have very few samples. During evaluation, metrics such as precision and recall may be undefined for these classes because the model predicted zero samples in them. This does not affect the overall accuracy or the main performance conclusions of the model.</p>
+<p>Note on class-specific metrics: Some classes, particularly the very high-quality wines, have very few observations. During evaluation, metrics such as precision and recall may be undefined for these classes because the model predicted zero observations in them. This does not affect the overall accuracy or the main performance conclusions of the model.</p>
 <p>These results indicate that the model fits the training data very well while maintaining good predictive performance on unseen data. This demonstrates that the Random Forest classifier is effective in predicting wine quality based on physicochemical properties.</p>
 </section>
 <section id="model-evaluation" class="level3">
@@ -509,7 +513,7 @@ Table&nbsp;4: Random Forest performance table
 <section id="confusion-matrix" class="level5">
 <h5 class="anchored" data-anchor-id="confusion-matrix">5.1.1 Confusion Matrix</h5>
 <p>The confusion matrix provides a visual summary of how well the model distinguishes between the different categories, while the classification report breaks down performance per class.</p>
-<p>Due to the natural class imbalance in the wine-quality dataset, some classes have very few samples, which results in undefined precision and recall values (these appear as warnings during evaluation). Despite this, the evaluation helps identify where the model performs well and where predictions remain challenging.</p>
+<p>Due to the natural class imbalance in the wine-quality dataset, some classes have very few observations, which results in undefined precision and recall values (these appear as warnings during evaluation). Despite this, the evaluation helps identify where the model performs well and where predictions remain challenging.</p>
 <p>The model was evaluated using the test set generated during preprocessing.</p>
 <div id="cell-fig-confusion-matrix" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
@@ -551,7 +555,7 @@ weighted avg       0.72      0.75      0.73      1064
 </div>
 <section id="interpretation-of-classification-report" class="level6">
 <h6 class="anchored" data-anchor-id="interpretation-of-classification-report">Interpretation of Classification Report</h6>
-<p>The overall accuracy of 75% suggests that the model performs reasonably well. The weighted averages are high because most samples belong to the Medium and Low classes, which the model predicts effectively. However, the macro average is much lower (≈0.49), indicating that the model performs poorly on the rare High (8–9) class.</p>
+<p>The overall accuracy of 75% suggests that the model performs reasonably well. The weighted averages are high because most observations belong to the Medium and Low classes, which the model predicts effectively. However, the macro average is much lower (≈0.49), indicating that the model performs poorly on the rare High (8–9) class.</p>
 </section>
 </section>
 <section id="discussion" class="level5">
@@ -646,7 +650,7 @@ Table&nbsp;5: Top 5 Most Important Features Identified by the Random Forest Mode
 <p>Stratified cross-validation was used to evaluate different combinations of hyperparameters, and class imbalance was handled using balanced class weights to ensure the minority class contributed proportionally to the training process. The resulting optimized model demonstrates improved generalization and robust performance on unseen test data.</p>
 <section id="class-distribution" class="level5">
 <h5 class="anchored" data-anchor-id="class-distribution">5.3.1 Class Distribution</h5>
-<p>The distribution of wine quality categories in the training and test sets is shown in Tables <a href="#tbl-train_dist_df" class="quarto-xref">Table&nbsp;2</a> and <a href="#tbl-test_dist_df" class="quarto-xref">Table&nbsp;3</a> (created during the data preprocessing stage). These tables summarize both the number of samples and the percentage of each quality class in the respective datasets.</p>
+<p>The distribution of wine quality categories in the training and test sets is shown in Tables <a href="#tbl-train_dist_df" class="quarto-xref">Table&nbsp;2</a> and <a href="#tbl-test_dist_df" class="quarto-xref">Table&nbsp;3</a> (created during the data preprocessing stage). These tables summarize both the number of observations and the percentage of each quality class in the respective datasets.</p>
 <p>As shown, the dataset exhibits a noticeable class imbalance, particularly for the minority “High (8-9)” category. To address this, the Random Forest classifier was trained using class_weight=“balanced” to ensure the model adequately learns from underrepresented classes without being biased toward the majority categories.</p>
 </section>
 </section>
@@ -807,6 +811,21 @@ Figure&nbsp;6: Confusion Matrix for Random Forest Optimized
 <li>The optimized Random Forest model achieved a balanced performance across classes with test accuracy of 0.7375 and well-balanced precision and recall.</li>
 </ul>
 </section>
+</section>
+</section>
+<section id="discussion-1" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-1">Discussion</h2>
+<section id="alcohol-content-as-primary-quality-indicator" class="level3">
+<h3 class="anchored" data-anchor-id="alcohol-content-as-primary-quality-indicator">Alcohol Content as Primary Quality Indicator</h3>
+<p>Our analysis identified alcohol content as the strongest predictor of wine quality (importance: 0.1466), which aligns with established oenological research. Higher alcohol levels are associated with increased body, flavor complexity, and perceived quality in wine evaluation <span class="citation" data-cites="jackson2014wine">(<a href="#ref-jackson2014wine" role="doc-biblioref">Jackson 2014</a>)</span>. This finding supports the industry understanding that ethanol content serves as a proxy for grape ripeness and sugar conversion efficiency during fermentation <span class="citation" data-cites="ribereau2006handbook">(<a href="#ref-ribereau2006handbook" role="doc-biblioref">Ribéreau-Gayon et al. 2006</a>)</span>.</p>
+</section>
+<section id="role-of-acidity-in-wine-quality" class="level3">
+<h3 class="anchored" data-anchor-id="role-of-acidity-in-wine-quality">Role of Acidity in Wine Quality</h3>
+<p>Volatile acidity demonstrated the second-highest feature importance (0.1049) with a strong negative correlation to quality. Elevated volatile acidity, primarily acetic acid, indicates bacterial spoilage and oxidation <span class="citation" data-cites="waterhouse2016understanding">(<a href="#ref-waterhouse2016understanding" role="doc-biblioref">Waterhouse, Sacks, and Jeffery 2016</a>)</span>. The negative relationship confirms that wines with higher acetic acid content receive lower quality ratings, consistent with findings on wine stability and sensory perception <span class="citation" data-cites="ribereau2006handbook">(<a href="#ref-ribereau2006handbook" role="doc-biblioref">Ribéreau-Gayon et al. 2006</a>)</span>.</p>
+</section>
+<section id="density-and-quality-relationships" class="level3">
+<h3 class="anchored" data-anchor-id="density-and-quality-relationships">Density and Quality Relationships</h3>
+<p>Density emerged as the third most important feature (0.1046), exhibiting a negative correlation with quality. This relationship reflects the inverse association between alcohol content and density—higher quality wines with elevated alcohol have lower density values <span class="citation" data-cites="jackson2014wine">(<a href="#ref-jackson2014wine" role="doc-biblioref">Jackson 2014</a>)</span>. This physicochemical principle has been documented in wine production literature <span class="citation" data-cites="waterhouse2016understanding">(<a href="#ref-waterhouse2016understanding" role="doc-biblioref">Waterhouse, Sacks, and Jeffery 2016</a>)</span>.</p>
 <section id="practical-applications" class="level4">
 <h4 class="anchored" data-anchor-id="practical-applications">Practical Applications</h4>
 <ol type="1">
@@ -820,7 +839,7 @@ Figure&nbsp;6: Confusion Matrix for Random Forest Optimized
 <ol type="1">
 <li><strong>Dataset Scope</strong>: Limited to Portuguese “Vinho Verde” wines.</li>
 <li><strong>Feature Set</strong>: Additional sensory or temporal data could further improve predictions.</li>
-<li><strong>Class Imbalance</strong>: High-quality wines (8-9) represent only ~3% of samples; model tuning with balanced class weights helped reduce bias toward majority classes.</li>
+<li><strong>Class Imbalance</strong>: High-quality wines (8-9) represent only ~3% of observations; model tuning with balanced class weights helped reduce bias toward majority classes.</li>
 <li><strong>Future Directions</strong>:
 <ul>
 <li>Extend the model to other wine regions and varieties.</li>
@@ -835,6 +854,10 @@ Figure&nbsp;6: Confusion Matrix for Random Forest Optimized
 <h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <p>This project demonstrated that the Random Forest classifier is effective for predicting wine quality from physicochemical properties. The optimized model achieved a test accuracy of 0.7375 with well-balanced precision and recall, showing good generalization to unseen data. Feature importance analysis highlighted alcohol content, volatile acidity, and density as key predictors, providing actionable insights for wine production optimization. Random Forest’s advantages—handling non-linear relationships, managing class imbalance, and providing interpretable features—make it a suitable choice for wine quality prediction in practice.</p>
 </section>
+<section id="future-directions" class="level3">
+<h3 class="anchored" data-anchor-id="future-directions">Future Directions</h3>
+<p>Conduct systematic benchmarking against Logistic Regression, SVM, and Gradient Boosting to validate Random Forest’s performance advantages</p>
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -848,8 +871,17 @@ Breiman, Leo. 2001. <span>“Random Forests.”</span> <em>Machine Learning</em>
 <div id="ref-cortez2009modeling" class="csl-entry" role="listitem">
 Cortez, Paulo, A Cerdeira, F Almeida, T Matos, and J Reis. 2009. <span>“Modeling Wine Preferences by Data Mining from Physicochemical Properties.”</span> <em>Decision Support Systems</em> 47 (4): 547–53. <a href="https://doi.org/10.1016/j.dss.2009.05.016">https://doi.org/10.1016/j.dss.2009.05.016</a>.
 </div>
+<div id="ref-jackson2014wine" class="csl-entry" role="listitem">
+Jackson, Ronald S. 2014. <em>Wine Science: Principles and Applications</em>. 4th ed. San Diego, CA: Academic Press.
+</div>
 <div id="ref-pedregosa2011scikit" class="csl-entry" role="listitem">
 Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011. <span>“Scikit-Learn: Machine Learning in Python.”</span> <em>Journal of Machine Learning Research</em> 12: 2825–30.
+</div>
+<div id="ref-ribereau2006handbook" class="csl-entry" role="listitem">
+Ribéreau-Gayon, Pascal, Yves Glories, Alain Maujean, and Denis Dubourdieu. 2006. <em>Handbook of Enology, Volume 2: The Chemistry of Wine Stabilization and Treatments</em>. 2nd ed. Chichester, UK: Wiley.
+</div>
+<div id="ref-waterhouse2016understanding" class="csl-entry" role="listitem">
+Waterhouse, Andrew L., Gavin L. Sacks, and David W. Jeffery. 2016. <em>Understanding Wine Chemistry</em>. Chichester, UK: Wiley.
 </div>
 </div>
 </section>
