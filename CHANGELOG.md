@@ -58,13 +58,13 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
   **Who:** @jimmy2026-V  
   **Evidence:** See PR [#46](link-to-PR).  
   
-- **Change:** PDF rendering fixed from HTML.  
+- **Change:** PDF rendering from HTML fixed.  
   **Who:** @junliliu1  
   **Evidence:** Commit [ghi789](link-to-commit), `docs/wine_quality_predictor_report.pdf`.
 
-  - **Change:** HTML rendering Improved 
+  - **Change:** HTML rendering Improved - all images are rendering correctly
   **Who:** @Purityj  
-  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/67
+  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/67 and https://github.com/junliliu1/wine_quality_predictor/pull/72
 
 ### Other Changes
 - **README.md edits to incorporate Milestone 4 changes.**  
