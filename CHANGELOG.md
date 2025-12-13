@@ -26,13 +26,13 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
   **Evidence:** PR [#50](link-to-PR), Dockerfile updated.
 
 
-#### Issue #82 (Reviewer: Goudimani)
+#### Issue #82 (Reviewer: Manikanth Goudimani)
 
 https://github.com/UBC-MDS/data-analysis-review-2025/issues/82
 
 - **Change:** Updated the Discussion section based on reviewer comments.  
   **Who:** @luisalonso8  
-  **Evidence:** PR [#77](https://github.com/junliliu1/wine_quality_predictor/pull/77), lines 120-150 and after conclussion in `reports/wine_quality_predictor_report.qmd`.
+  **Evidence:** PR [#77](https://github.com/junliliu1/wine_quality_predictor/pull/77), Discussion section and after conclussion in `reports/wine_quality_predictor_report.qmd`.
 
 #### Issue #57 (Reviewer: Sam Lokanc)
 
@@ -44,16 +44,15 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/57
 
 - **Change:** Updated Discussion section.  
   **Who:** @luisalonso8  
-  **Evidence:** PR [#47](link-to-PR), lines 180-200.
+  **Evidence:** PR [#77](https://github.com/junliliu1/wine_quality_predictor/pull/77), Discussion Section  in `reports/wine_quality_predictor_report.qmd`.
 
-#### Issue #49 (Reviewer: Hugo)
+#### Issue #49 (Reviewer: Hugo Kwok)
 
 https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
 
 - **Change:** Model comparison added to Discussion section.  
   **Who:** @luisalonso8  
-  **Evidence:** PR [#48](link-to-PR), section “Model Comparison” in `reports/wine_quality_predictor_report.qmd`.  
-
+  **Evidence:** PR [#77](https://github.com/UBC-MDS/data-analysis-review-2025/issues/49), Discussion Section and after conclussion in `reports/wine_quality_predictor_report.qmd` in Discussion section .
 - **Change:** Notebook moved to `analysis/` folder.  
   **Who:** @jimmy2026-V  
   **Evidence:** See PR [#46](link-to-PR).  
