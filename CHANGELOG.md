@@ -23,7 +23,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
 
   - **Docker build performance improved:** Built docker before pushing to Dockerhub so that next time a user starts the container they can just use `docker compose up`  
   **Who:** @Purityj  
-  **Evidence:** PR [#50](link-to-PR), Dockerfile updated.
+  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/76
 
 
 #### Issue #82 (Reviewer: Goudimani)
