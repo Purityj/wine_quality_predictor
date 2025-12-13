@@ -30,7 +30,7 @@ editor: source
 
 ## Summary
 
-This project implements a Random Forest classifier to predict wine quality based on physicochemical properties. Using the Wine Quality dataset from the UCI Machine Learning Repository (6,497 samples with 11 features, reduced to 5,320 after removing duplicates), we develop a robust prediction model that leverages the ensemble learning capabilities of Random Forest. Our analysis demonstrates that Random Forest effectively handles the non-linear relationships between chemical properties and wine quality, achieving an accuracy of approximately 74.6% on the test set. The model identifies alcohol content, volatile acidity, and density as the most influential factors in determining wine quality. A limitation of this study is that it only considers Portuguese "Vinho Verde" wines, which may limit the generalizability of the model to other wine types. This work provides valuable insights for wine producers to optimize production processes and maintain consistent quality standards.
+This project implements a Random Forest classifier to predict wine quality based on physicochemical properties. Using the Wine Quality dataset from the UCI Machine Learning Repository (6,497 observations with 11 features, reduced to 5,320 after removing duplicates), we develop a robust prediction model that leverages the ensemble learning capabilities of Random Forest. Our analysis demonstrates that Random Forest effectively handles the non-linear relationships between chemical properties and wine quality, achieving an accuracy of approximately 74.6% on the test set. The model identifies alcohol content, volatile acidity, and density as the most influential factors in determining wine quality. A limitation of this study is that it only considers Portuguese "Vinho Verde" wines, which may limit the generalizability of the model to other wine types. This work provides valuable insights for wine producers to optimize production processes and maintain consistent quality standards.
 
 ## Introduction
 
@@ -55,15 +55,15 @@ We selected Random Forest as our primary algorithm for several reasons:
 
 ## Methods
 
-We used the Wine Quality Dataset from [@cortez2009modeling], comprising 6,490 wine samples (1,599 red, 4,891 white) with 11 physicochemical features and quality scores ranging from 3-9. After comprehensive data validation using Pandera, we trained a Random Forest classifier [@breiman2001random] using scikit-learn [@pedregosa2011scikit]. The data was split 75/25 for training and testing, with 5-fold stratified cross-validation for model selection. Hyperparameters were optimized using grid search over number of trees (100-300), max depth (10-30, None), and minimum samples for splitting (2-10) and leaf nodes (1-4). Model performance was evaluated using accuracy, precision, recall, F1-score, and confusion matrices, with feature importance rankings to identify key wine quality predictors.
+We used the Wine Quality Dataset from [@cortez2009modeling], comprising 6,490 wine observations (1,599 red, 4,891 white) with 11 physicochemical features and quality scores ranging from 3-9. After comprehensive data validation using Pandera, we trained a Random Forest classifier [@breiman2001random] using scikit-learn [@pedregosa2011scikit]. The data was split 75/25 for training and testing, with 5-fold stratified cross-validation for model selection. Hyperparameters were optimized using grid search over number of trees (100-300), max depth (10-30, None), and minimum observations for splitting (2-10) and leaf nodes (1-4). Model performance was evaluated using accuracy, precision, recall, F1-score, and confusion matrices, with feature importance rankings to identify key wine quality predictors.
 
 ### Data
 
 **Dataset**: Wine Quality Dataset (@cortez2009modeling)
-- **Red wine**: 1,599 samples
-- **White wine**: 4,898 samples
-- **Subtotal**: 6,497 samples
-- **Total**: 6,497 samples (5,320 after removing duplicates)
+- **Red wine**: 1,599 observations
+- **White wine**: 4,898 observations
+- **Subtotal**: 6,497 observations
+- **Total**: 6,497 observations (5,320 after removing duplicates)
 
 
 **Features (11 physicochemical properties)**:
@@ -155,7 +155,7 @@ print("Libraries loaded successfully!")
 
 ### 1. Data Loading and Preparation
 
-To begin our analysis, we downloaded the two wine quality datasets provided by Cortez et al. (2009). These files contain measurements for red and white wine samples, including physicochemical properties and expert-assigned quality scores.
+To begin our analysis, we downloaded the two wine quality datasets provided by Cortez et al. (2009). These files contain measurements for red and white wine observations, including physicochemical properties and expert-assigned quality scores.
 
 The data were downloaded using our automated script, which saves the raw files into the data/raw directory.
 
@@ -168,13 +168,13 @@ The two datasets downloaded were:
 
 Before proceeding with the analysis, we perform comprehensive data validation checks to ensure the quality and integrity of the dataset. Following this [Data Validation Checklist](https://ubc-dsci.github.io/reproducible-and-trustworthy-workflows-for-data-science/lectures/130-data-validation.html#data-validation-checklist), we use Pandera [@bantilan2020pandera], a statistical schema validation library for Python, to systematically check data types, ranges, and constraints. 
 
-We validated the raw red and white wine datasets prior to analysis by confirming correct file structure, column names, and data types, and verifying the absence of missing or empty observations. Duplicate records (1,177 rows) were removed from the combined dataset, resulting in 5,320 unique samples. All features fell within expected ranges, category levels were valid, and the target variable showed a highly imbalanced—but expected—quality distribution. Correlation checks indicated no problematic collinearity or data leakage issues.
+We validated the raw red and white wine datasets prior to analysis by confirming correct file structure, column names, and data types, and verifying the absence of missing or empty observations. Duplicate records (1,177 rows) were removed from the combined dataset, resulting in 5,320 unique observations. All features fell within expected ranges, category levels were valid, and the target variable showed a highly imbalanced—but expected—quality distribution. Correlation checks indicated no problematic collinearity or data leakage issues.
 
 ### 2. Exploratory Data Analysis
 
 Our exploratory analysis reveals several key insights about the wine quality dataset:
 
-**Quality Distribution:** As shown in @fig-quality-distribution, wine quality scores follow a normal distribution centered around scores 5-6, with very few wines receiving extreme ratings (3 or 9). The dataset exhibits a significant class imbalance, with medium-quality wines (scores 6-7) comprising the majority of samples. White wines show a broader distribution across quality scores compared to red wines, which are more concentrated in the 5-6 range.
+**Quality Distribution:** As shown in @fig-quality-distribution, wine quality scores follow a normal distribution centered around scores 5-6, with very few wines receiving extreme ratings (3 or 9). The dataset exhibits a significant class imbalance, with medium-quality wines (scores 6-7) comprising the majority of observations. White wines show a broader distribution across quality scores compared to red wines, which are more concentrated in the 5-6 range.
 
 **Feature-Quality Relationships:** @fig-feature-correlations demonstrates that alcohol content exhibits the strongest positive correlation with wine quality, suggesting that higher alcohol wines tend to receive better ratings. Conversely, volatile acidity shows the strongest negative correlation, indicating that wines with higher acetic acid levels are rated lower. Other notable positive correlates include citric acid and sulphates, while density and chlorides show negative associations with quality.
 
@@ -415,7 +415,7 @@ rf_perf_df
 ```
 
 
-Note on class-specific metrics: Some classes, particularly the very high-quality wines, have very few samples. During evaluation, metrics such as precision and recall may be undefined for these classes because the model predicted zero samples in them. This does not affect the overall accuracy or the main performance conclusions of the model.
+Note on class-specific metrics: Some classes, particularly the very high-quality wines, have very few observations. During evaluation, metrics such as precision and recall may be undefined for these classes because the model predicted zero observations in them. This does not affect the overall accuracy or the main performance conclusions of the model.
 
 ```{python}
 #Remove this if can't fix threshold
@@ -450,7 +450,7 @@ In this step, we evaluate the performance of the trained Random Forest classifie
 
 The confusion matrix provides a visual summary of how well the model distinguishes between the different categories, while the classification report breaks down performance per class.
 
-Due to the natural class imbalance in the wine-quality dataset, some classes have very few samples, which results in undefined precision and recall values (these appear as warnings during evaluation). Despite this, the evaluation helps identify where the model performs well and where predictions remain challenging.
+Due to the natural class imbalance in the wine-quality dataset, some classes have very few observations, which results in undefined precision and recall values (these appear as warnings during evaluation). Despite this, the evaluation helps identify where the model performs well and where predictions remain challenging.
 
 The model was evaluated using the test set generated during preprocessing.
 
@@ -503,7 +503,7 @@ else:
 ###### Interpretation of Classification Report
 
 The overall accuracy of 75% suggests that the model performs reasonably well.
-The weighted averages are high because most samples belong to the Medium and Low classes, which the model predicts effectively.
+The weighted averages are high because most observations belong to the Medium and Low classes, which the model predicts effectively.
 However, the macro average is much lower (≈0.49), indicating that the model performs poorly on the rare High (8–9) class.
 
 
@@ -569,7 +569,7 @@ Stratified cross-validation was used to evaluate different combinations of hyper
 
 ##### 5.3.1 Class Distribution
 
-The distribution of wine quality categories in the training and test sets is shown in Tables @tbl-train_dist_df and @tbl-test_dist_df (created during the data preprocessing stage). These tables summarize both the number of samples and the percentage of each quality class in the respective datasets.
+The distribution of wine quality categories in the training and test sets is shown in Tables @tbl-train_dist_df and @tbl-test_dist_df (created during the data preprocessing stage). These tables summarize both the number of observations and the percentage of each quality class in the respective datasets.
 
 As shown, the dataset exhibits a noticeable class imbalance, particularly for the minority "High (8-9)" category. To address this, the Random Forest classifier was trained using class_weight="balanced" to ensure the model adequately learns from underrepresented classes without being biased toward the majority categories.
 
@@ -726,7 +726,7 @@ alcohol_importance = round(float(fi_table.head(1)['importance'].iloc[0]), 4)
 
 1. **Dataset Scope**: Limited to Portuguese "Vinho Verde" wines.
 2. **Feature Set**: Additional sensory or temporal data could further improve predictions.
-3. **Class Imbalance**: High-quality wines (8-9) represent only ~3% of samples; model tuning with balanced class weights helped reduce bias toward majority classes.
+3. **Class Imbalance**: High-quality wines (8-9) represent only ~3% of observations; model tuning with balanced class weights helped reduce bias toward majority classes.
 4. **Future Directions**: 
    - Extend the model to other wine regions and varieties.
    - Incorporate temporal data and wine aging effects.
