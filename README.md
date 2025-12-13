@@ -137,7 +137,13 @@ For further instructions on shutting down and cleaning up Docker containers, see
 
 1. Add the dependency to the `environment.yml` file on a new branch.
 
-2. Run `conda-lock lock --file environment.yml -p linux-64 -p osx-64 -p osx-arm64 -p win-64 -p linux-aarch64` to update the `conda-lock.yml` file.
+2. Run 
+
+```bash
+conda-lock lock --file environment.yml -p linux-64 -p osx-64 -p osx-arm64 -p win-64 -p linux-aarch64
+```
+
+to update the `conda-lock.yml` file.
 
 3. **Rebuild the Docker container** to include the new dependency. See [Running the Analysis – Developer Options](#running-the-analysis-developer-options) for instructions on building and running the Docker container.
 

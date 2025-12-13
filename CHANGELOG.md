@@ -15,7 +15,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
 
 - **Change:** Suppressed warnings in scripts outputs
   **Who:** @Purityj  
-  **Evidence:** See PR [abc123](link-to-commit) and notebook outputs in `reports/wine_quality_predictor_report.qmd`.  
+  **Evidence:** PR: 
 
 - **Change:** Updated the Discussion section based on reviewer comments.  
   **Who:** @luisalonso8  
@@ -23,7 +23,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
 
   - **Docker build performance improved:** Built docker before pushing to Dockerhub so that next time a user starts the container they can just use `docker compose up`  
   **Who:** @Purityj  
-  **Evidence:** PR [#50](link-to-PR), Dockerfile updated.
+  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/78
 
 
 #### Issue #82 (Reviewer: Goudimani)
@@ -40,7 +40,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/57
 
 - **Change:** Converted classification report into a table format.  
   **Who:** @jimmy2026-V  
-  **Evidence:** Commit [def456](link-to-commit), Table generated in `reports/wine_quality_predictor_report.qmd`. 
+  **Evidence:** PR: 
 
 - **Change:** Updated Discussion section.  
   **Who:** @luisalonso8  
@@ -60,7 +60,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
   
 - **Change:** PDF rendering from HTML fixed.  
   **Who:** @junliliu1  
-  **Evidence:** Commit [ghi789](link-to-commit), `docs/wine_quality_predictor_report.pdf`.
+  **Evidence:** PR: 
 
   - **Change:** HTML rendering Improved - all images are rendering correctly
   **Who:** @Purityj  
@@ -69,7 +69,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
 ### Other Changes
 - **README.md edits to incorporate Milestone 4 changes.**  
   **Who:** @Purityj  
-  **Evidence:** PR [#51](link-to-PR), `README.md`.
+  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/76
 
 ---
 
@@ -79,4 +79,4 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
 - Fixed PDF rendering issue
 - Updated Discussion section based on feedback
 - Fixed html rendering issues 
-- 
+- Converted classification report into a table format
