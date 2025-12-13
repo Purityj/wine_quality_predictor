@@ -13,7 +13,7 @@ This project predicts wine quality categories (Low, Medium, High) from physicoch
 
 ## Dependencies
 
-This project uses **Conda** for environment management. All the dependencies are listed in `environment.yml`.
+This project uses **Conda**  for environment management and **Docker** to ensure fully reproducible environment. All the dependencies are listed in `environment.yml`.
 
 Key packages include:
 
@@ -48,12 +48,12 @@ git clone https://github.com/junliliu1/wine_quality_predictor.git
 cd wine_quality_predictor
 ```
 
-### 2. Run the Analysis
+### 2. Run the full Analysis (Reccommended)
 
-1. Run the following command on the terminal(on your computer) to build and start the docker container(this may take 8-12 minutes):
+1. Run the following command on the terminal(on your computer) to start the docker container.
 
 ```bash
-docker compose up --build
+docker compose up
 ```
 
 If Docker says the container name already exists or is in use, run the command below to delete it, then run the previous Docker Compose command again.
@@ -62,87 +62,68 @@ If Docker says the container name already exists or is in use, run the command b
 docker rm -f wine-quality-predictor
 ```
 
-2. In the terminal, look for a URL that starts with `http://127.0.0.1:8888/lab` 
+2. In the terminal, look for a URL that starts with:
+
+ [`http://127.0.0.1:8888/lab`](http://127.0.0.1:8888/lab)
+ 
 (for an example, see the highlighted text in the terminal below). 
-Copy and paste that URL into your browser.
+Copy and paste that URL into your browser to open JupyterLab.
 
 <img src="img/jupyter-container-web-app-launch-url.png" width=400>
 
 3. In JupyterLab, open a terminal by clicking File → New → Terminal in the top-left menu.
 
-4. To run the full analysis pipeline, execute the following command:
+4. Run the full analysis:
 
 ```bash
-python scripts/run_all_scripts.py
+make all
 ```
 
-This script runs all data processing, modeling, and evaluation scripts, and automatically generates the final report in HTML format. The output HTML file `(wine_quality_predictor_report.html)` will appear in the `reports/` folder.
+This script runs all data processing, modeling, and evaluation scripts, and automatically generates the final report in HTML format. The output HTML file (`index.html`) will appear in the (`reports/`) folder.
 
 To view the report correctly (with all images), open the reports/ folder on your local machine, copy the file path of the generated HTML report, and paste it into your browser.
 
-5. Alternatively, if you want to run the individual analysis Python scripts, run the following commands one after another in the order shown below (script 7: hyperparameter tuning, may take 5-10 minutes):
+### 5. (Optional) Run Individual Steps
+If you prefer to run each stage separately:
 
 ```bash
-# 1. Download/Extract Data
-python scripts/01_download_data.py \
-    --output-dir data/raw 
+# 1. Download data
+make data/raw/winequality-red.csv data/raw/winequality-white.csv
 
-# 2. Clean/Transform Data
-python scripts/02_clean_data.py --red-wine data/raw/winequality-red.csv \
-           --white-wine data/raw/winequality-white.csv --output-path data/processed/wine_data_cleaned.csv
+# 2. Clean data
+make data/processed/wine_data_cleaned.csv
 
 # 3. Exploratory Data Analysis
-python scripts/03_eda.py --input-file data/processed/cleaned_wine.csv --output-dir results/figures
+make results/figures/quality_distributions.png \
+     results/figures/feature_correlations.png \
+     results/figures/correlation_heatmap.png
 
-# 4. Model Fitting/Training
-python scripts/04_train_wine_quality_classifier.py \
-     --input-csv data/processed/wine_data_cleaned.csv \
-     --output-model models/rf_wine_models.pkl
+# 4. Train model
+make results/models/rf_wine_models.pkl results/splits.pkl
 
-# 5. Model Evaluation
-python scripts/05_evaluate_using_confusion_matrix.py \
-    --model-path results/models/rf_wine_models.pkl \
-    --splits-path results/splits.pkl \
-    --output-dir results/evaluation
+# 5. Evaluate model
+make results/evaluation/confusion_matrix_random_forest.png \
+     results/evaluation/classification_report.txt
 
+make results/evaluation/feature_importance_random_forest.png \
+     results/evaluation/feature_importance_table.csv
 
-python scripts/06_evaluate_using_feature_importance.py \
-        --input-csv data/processed/wine_data_cleaned.csv \
-        --model-path results/models/rf_wine_models.pkl \
-        --output-dir results/evaluation
-
-#this may take awhile
-python scripts/07_tune_random_forest_hyperparameters.py \
-    --splits-pkl results/splits.pkl \
-    --output-model results/models/rf_wine_model_optimized.pkl \
-    --output-dir results/evaluation \
-    --cv-folds 5 \
-    --n-jobs -1
-
-
-# 6. Render the final report
-quarto render reports/wine_quality_predictor_report.qmd --to html
+# 6. Hyperparameter tuning (may take 5–10 minutes)
+make results/models/rf_wine_model_optimized.pkl \
+     results/evaluation/rf_hyperparameter_tuning_results.txt \
+     results/evaluation/rf_test_metrics.json \
+     results/evaluation/confusion_matrix_random_forest_optimized.png
 ```
-
-The output HTML file `(wine_quality_predictor_report.html)` will appear in the `reports/` folder.
-To view the report correctly (with all images), open the reports/ folder on your local machine, copy the file path of the generated HTML report, and paste it into your browser.
-
-### Script Details
-
-| Script | Description | Input | Output |
-|--------|-------------|-------|--------|
-| `01_download_data.py` | Download/Extract raw wine quality datasets | UCI URLs | `data/raw/*.csv` |
-| `02_clean_data.py` | Clean, merge, and transform raw data | `data/raw/winequality-red.csv`, `data/raw/winequality-white.csv` | `data/processed/wine_data_cleaned.csv` |
-| `03_eda.py` | Exploratory Data Analysis - generate visualizations | `data/processed/wine_data_cleaned.csv` | `results/figures/*` |
-| `04_train_wine_quality_classifier.py` | Train Random Forest classifier | `data/processed/wine_data_cleaned.csv` | `models/rf_wine_models.pkl` |
-| `05_evaluate_using_confusion_matrix.py` | Evaluate the baseline Random Forest using a confusion matrix and classification report on the test set. | `results/models/rf_wine_models.pkl`, `data/processed/wine_data_cleaned.csv` | `results/evaluation/confusion_matrix_random_forest_initial.png`, `results/evaluation/classification_report_random_forest_initial.txt` |
-| `06_evaluate_using_feature_importance.py` | Analyze and visualize Random Forest feature importances. | `results/models/rf_wine_models.pkl`, `data/processed/wine_data_cleaned.csv` | `results/evaluation/feature_importance_random_forest.png`, `results/evaluation/feature_importance_table.csv` |
-| `07_tune_random_forest_hyperparameters.py` | Hyperparameter tuning for Random Forest via `GridSearchCV`, plus evaluation of the optimized model. | `data/processed/wine_data_cleaned.csv` | `results/models/rf_wine_model_optimized.pkl`, `results/evaluation/confusion_matrix_random_forest_optimized.png`, `results/evaluation/rf_hyperparameter_tuning_results.txt` |
-| `reports/wine_quality_predictor_report.qmd` | Render final report | Processed data + generated figures | HTML + PDF files in `reports/` |
 
 #### Clean up
 
-For instructions on shutting down and cleaning up Docker containers, see [Developer Notes → Running the Analysis – Developer Options → Clean Up](#running-the-analysis-developer-options).
+To remove all generated files and reset the repository:
+
+```bash
+make clean
+```
+
+For further instructions on shutting down and cleaning up Docker containers, see [Developer Notes → Running the Analysis – Developer Options → Clean Up](#running-the-analysis-developer-options).
 
 ## Developer Notes
 
@@ -160,7 +141,7 @@ For instructions on shutting down and cleaning up Docker containers, see [Develo
 
 3. **Rebuild the Docker container** to include the new dependency. See [Running the Analysis – Developer Options](#running-the-analysis-developer-options) for instructions on building and running the Docker container.
 
-4. Push the changes to GitHub. A new Docker image will be built and pushed to Docker Hub automatically.  It will be tagged with the SHA for the commit that changed the file.
+4. Push the changes to GitHub. A new Docker image will be built and pushed to Docker Hub automatically via GitHub Actions.  It will be tagged with the SHA for the commit that changed the file.
 
 5. Update the `docker-compose.yml` file on your branch to use the new container image (make sure to update the tag specifically).
 
@@ -176,7 +157,7 @@ After cloning the repository and cd to it on your local computer, the analysis c
 
 #### Option 1: Build the Docker Image Locally (Recommended for Development)
 
-This is best option if you want to actively work on the project and potentially rebuild the environment.
+This is best option if you want to actively work on the project and potentially rebuild the environment. Use docker compose up --build only when dependencies or the Dockerfile have changed.
 
 ```bash
 docker compose up --build
