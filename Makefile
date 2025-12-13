@@ -5,12 +5,17 @@
 .PHONY: help all clean data analysis report
 .PHONY: cl env build run up stop docker-build-push docker-build-local
 
+# DOCS_DIR = docs
+# REPORT_HTML = reports/index.html
+# REPORT_FILES = reports/wine_quality_predictor_report_files
+
 help: ## Show this help message
 	@echo "Wine Quality Predictor - Available commands:"
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 all: reports/wine_quality_predictor_report.html ## Run the complete analysis pipeline
+#all: ghpages ## Run the complete analysis pipeline
 
 clean: ## Remove all generated files
 	rm -rf data/raw/*.csv
@@ -88,6 +93,12 @@ reports/wine_quality_predictor_report.html: reports/wine_quality_predictor_repor
                                             results/evaluation/confusion_matrix_random_forest_optimized.png \
                                             results/evaluation/rf_test_metrics.json
 	quarto render reports/wine_quality_predictor_report.qmd --to html
+
+ ## Copy report output to docs/ for GitHub Pages
+# ghpages: $(REPORT_HTML)
+# 	mkdir -p $(DOCS_DIR)
+# 	cp $(REPORT_HTML) $(DOCS_DIR)/index.html
+# 	cp -r $(REPORT_FILES) $(DOCS_DIR)/
 
 # Convenience targets
 data: data/processed/wine_data_cleaned.csv ## Download and clean data only
