@@ -714,6 +714,20 @@ alcohol_importance = round(float(fi_table.head(1)['importance'].iloc[0]), 4)
 - **Volatile acidity** and **density** were also important predictors.
 - The optimized Random Forest model achieved a balanced performance across classes with test accuracy of `{python} cv_score` and well-balanced precision and recall.
 
+## Discussion
+
+### Alcohol Content as Primary Quality Indicator
+
+Our analysis identified alcohol content as the strongest predictor of wine quality (importance: 0.1466), which aligns with established oenological research. Higher alcohol levels are associated with increased body, flavor complexity, and perceived quality in wine evaluation [@jackson2014wine]. This finding supports the industry understanding that ethanol content serves as a proxy for grape ripeness and sugar conversion efficiency during fermentation [@ribereau2006handbook].
+
+### Role of Acidity in Wine Quality
+
+Volatile acidity demonstrated the second-highest feature importance (0.1049) with a strong negative correlation to quality. Elevated volatile acidity, primarily acetic acid, indicates bacterial spoilage and oxidation [@waterhouse2016understanding]. The negative relationship confirms that wines with higher acetic acid content receive lower quality ratings, consistent with findings on wine stability and sensory perception [@ribereau2006handbook].
+
+### Density and Quality Relationships
+
+Density emerged as the third most important feature (0.1046), exhibiting a negative correlation with quality. This relationship reflects the inverse association between alcohol content and density—higher quality wines with elevated alcohol have lower density values [@jackson2014wine]. This physicochemical principle has been documented in wine production literature [@waterhouse2016understanding].
+
 
 #### Practical Applications
 
@@ -738,6 +752,9 @@ alcohol_importance = round(float(fi_table.head(1)['importance'].iloc[0]), 4)
 
 This project demonstrated that the Random Forest classifier is effective for predicting wine quality from physicochemical properties. The optimized model achieved a test accuracy of `{python} cv_score` with well-balanced precision and recall, showing good generalization to unseen data. Feature importance analysis highlighted alcohol content, volatile acidity, and density as key predictors, providing actionable insights for wine production optimization. Random Forest's advantages—handling non-linear relationships, managing class imbalance, and providing interpretable features—make it a suitable choice for wine quality prediction in practice.
 
+### Future Directions
+
+Conduct systematic benchmarking against Logistic Regression, SVM, and Gradient Boosting to validate Random Forest's performance advantages
 
 ## References
 
