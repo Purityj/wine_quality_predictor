@@ -183,15 +183,73 @@ Our exploratory analysis reveals several key insights about the wine quality dat
 These patterns inform our modeling strategy: the class imbalance requires careful handling, the strong alcohol-quality relationship suggests it will be a key predictive feature, and the feature intercorrelations indicate that regularization techniques or tree-based methods may be particularly appropriate for this dataset.
 
 
-![Wine quality distribution analysis showing (a) overall quality score distribution, (b) distribution by wine type, and (c) quality categories for classification](../results/figures/quality_distributions.png){#fig-quality-distribution}
+```{python}
+#| label: fig-quality-distribution
+#| fig-cap: "Wine quality distribution analysis showing (a) overall quality score distribution, (b) distribution by wine type, and (c) quality categories for classification"
+#| fig-align: center
+#| fig-width: 8
+#| #| fig-height: 5
+
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Path to the image
+img_path = "../results/figures/quality_distributions.png"
+
+# Open and plot the image
+img = Image.open(img_path)
+plt.imshow(img)
+plt.axis("off")  # Hide axes
+plt.title("Wine Quality Distribution Analysis")  # Optional, caption is already via fig-cap
+plt.show()
+```
 
 @fig-quality-distribution shows the distribution of wine quality scores. Most wines receive medium quality scores (5-7), with very few at the extremes.
 
-![Feature correlations with wine quality](../results/figures/feature_correlations.png){#fig-feature-correlations}
+```{python}
+#| label: fig-feature-correlations
+#| fig-cap: "Feature Correlations with Wine Quality"
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4
+
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Path to the image
+img_path = "../results/figures/feature_correlations.png"
+
+# Open and plot the image
+img = Image.open(img_path)
+plt.imshow(img)
+plt.axis("off")  # Hide axes
+plt.title("Feature Correlations with Wine Quality")  # Optional, caption is already via fig-cap
+plt.show()
+```
 
 @fig-feature-correlations reveals that alcohol content shows the strongest positive correlation with quality, while volatile acidity shows the strongest negative correlation.
 
-![Feature correlation heatmap](../results/figures/correlation_heatmap.png){#fig-correlation-heatmap}
+```{python}
+#| label: fig-correlation-heatmap
+#| fig-cap: "Feature Correlation Heatmap"
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4
+
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Path to the image
+img_path = "../results/figures/correlation_heatmap.png"
+
+# Open and plot the image
+img = Image.open(img_path)
+plt.imshow(img)
+plt.axis("off")  # Hide axes
+plt.title("Feature Correlation Heatmap")  # Optional, caption is already via fig-cap
+plt.show()
+
+```
 
 @fig-correlation-heatmap displays the correlations between all physicochemical features, helping identify potential multicollinearity issues for our models.
 
@@ -607,7 +665,26 @@ The confusion matrix @fig-conf-matrix summarizes the model’s predictions on th
 
 The confusion matrix (Figure 1) illustrates how the model performs across the three wine quality categories. The use of balanced class weights helped the classifier better identify the minority "High (8-9)" wines while maintaining accuracy on the more common categories.
 
-![](../results/evaluation/confusion_matrix_random_forest_optimized.png){#fig-conf-matrix width=60%}
+```{python}
+#| label: fig-conf-matrix
+#| fig-cap: "Confusion Matrix for Random Forest Optimized"
+#| fig-align: center
+#| fig-width: 6
+#| fig-height: 4
+
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Path to the image
+img_path = "../results/evaluation/confusion_matrix_random_forest_optimized.png"
+
+# Open and plot the image
+img = Image.open(img_path)
+plt.imshow(img)
+plt.axis("off")  # Hide axes
+plt.title("Confusion Matrix for Random Forest Optimized")  # Optional, can match fig-cap
+plt.show()
+```
 
 Key observations from the confusion matrix include:
 
