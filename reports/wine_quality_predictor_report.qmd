@@ -109,11 +109,7 @@ We used the Wine Quality Dataset from [@cortez2009modeling], comprising 6,490 wi
      - min_samples_leaf
      - max_features
 
-5. **Model Comparison**
-   - Benchmark against Logistic Regression, SVM, and Gradient Boosting
-   - Validate Random Forest superiority
-
-6. **Final Evaluation**
+5. **Final Evaluation**
    - Test set performance
    - Confusion matrix analysis
    - Feature importance interpretation
