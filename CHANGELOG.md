@@ -13,10 +13,6 @@ This file is created to track improvements made based on peer review feedback an
 
 https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
 
-- **Change:** Suppressed warnings in scripts outputs
-  **Who:** @Purityj  
-  **Evidence:** PR:
-
 - **Change:** Replaced "samples" with "observations" throughout report and documentation.  
   **Who:** @luisalonso8  
   **Evidence:** See PR [75](https://github.com/junliliu1/wine_quality_predictor/pull/75) and notebook outputs in `reports/wine_quality_predictor_report.qmd`.
@@ -44,11 +40,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/57
 
 - **Change:** Converted classification report into a table format.  
   **Who:** @jimmy2026-V  
-  **Evidence:** PR:
-
-- **Change:** Updated Discussion section.  
-  **Who:** @luisalonso8  
-  **Evidence:** PR [#77](https://github.com/junliliu1/wine_quality_predictor/pull/77), Discussion Section  in `reports/wine_quality_predictor_report.qmd`.
+  **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/79
 
 #### Issue #49 (Reviewer: Hugo Kwok)
 
