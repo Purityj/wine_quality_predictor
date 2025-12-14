@@ -15,13 +15,13 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/38
 
 - **Change:** Suppressed warnings in scripts outputs
   **Who:** @Purityj  
-  **Evidence:** PR: 
+  **Evidence:** PR:
 
- **Change:** Replaced "samples" with "observations" throughout report and documentation.  
+- **Change:** Replaced "samples" with "observations" throughout report and documentation.  
   **Who:** @luisalonso8  
   **Evidence:** See PR [75](https://github.com/junliliu1/wine_quality_predictor/pull/75) and notebook outputs in `reports/wine_quality_predictor_report.qmd`.
 
-  - **Docker build performance improved:** Built docker before pushing to Dockerhub so that next time a user starts the container they can just use `docker compose up`  
+- **Docker build performance improved:** Built docker before pushing to Dockerhub so that next time a user starts the container they can just use `docker compose up`  
   **Who:** @Purityj  
   **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/78
 
@@ -34,13 +34,17 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/82
   **Who:** @luisalonso8  
   **Evidence:** PR [#77](https://github.com/junliliu1/wine_quality_predictor/pull/77), Discussion section and after conclussion in `reports/wine_quality_predictor_report.qmd`.
 
+- **Change:** Fixed HTML rendering issues for GitHub Pages documentation output.  
+  **Who:** @junliliu1  
+  **Evidence:** PR [#63](https://github.com/junliliu1/wine_quality_predictor/pull/63).
+
 #### Issue #57 (Reviewer: Sam Lokanc)
 
 https://github.com/UBC-MDS/data-analysis-review-2025/issues/57
 
 - **Change:** Converted classification report into a table format.  
   **Who:** @jimmy2026-V  
-  **Evidence:** PR: 
+  **Evidence:** PR:
 
 - **Change:** Updated Discussion section.  
   **Who:** @luisalonso8  
@@ -59,9 +63,9 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
   
 - **Change:** PDF rendering from HTML fixed.  
   **Who:** @junliliu1  
-  **Evidence:** PR: 
+  **Evidence:** PR:
 
-  - **Change:** HTML rendering Improved - all images are rendering correctly
+- **Change:** HTML rendering Improved - all images are rendering correctly  
   **Who:** @Purityj  
   **Evidence:** PR: https://github.com/junliliu1/wine_quality_predictor/pull/67 and https://github.com/junliliu1/wine_quality_predictor/pull/72
 
@@ -77,5 +81,5 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
 - Suppressed warnings in outputs
 - Fixed PDF rendering issue
 - Updated Discussion section based on feedback
-- Fixed html rendering issues 
+- Fixed html rendering issues
 - Converted classification report into a table format
