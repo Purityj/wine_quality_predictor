@@ -86,31 +86,35 @@ This script runs all data processing, modeling, and evaluation scripts, and auto
 To view the report correctly (with all images), open the reports/ folder on your local machine, copy the file path of the generated HTML report, and paste it into your browser.
 
 ### 5. (Optional) Run Individual Steps
+
 If you prefer to run each stage separately:
 
 ```bash
-# 1. Download data
-make data/raw/winequality-red.csv data/raw/winequality-white.csv
+# 1. Download data and clean data
+make data
 
-# 2. Clean data
-make data/processed/wine_data_cleaned.csv
+# 2. Run Analysis without report
+make analysis
 
-# 3. Exploratory Data Analysis
+# 3. Render Report only
+make report
+
+# 4. Exploratory Data Analysis
 make results/figures/quality_distributions.png \
      results/figures/feature_correlations.png \
      results/figures/correlation_heatmap.png
 
-# 4. Train model
+# 5. Train model
 make results/models/rf_wine_models.pkl results/splits.pkl
 
-# 5. Evaluate model
+# 6. Evaluate model
 make results/evaluation/confusion_matrix_random_forest.png \
      results/evaluation/classification_report.txt
 
 make results/evaluation/feature_importance_random_forest.png \
      results/evaluation/feature_importance_table.csv
 
-# 6. Hyperparameter tuning (may take 5–10 minutes)
+# 7. Hyperparameter tuning (may take 5–10 minutes)
 make results/models/rf_wine_model_optimized.pkl \
      results/evaluation/rf_hyperparameter_tuning_results.txt \
      results/evaluation/rf_test_metrics.json \
