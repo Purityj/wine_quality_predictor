@@ -63,7 +63,7 @@ https://github.com/UBC-MDS/data-analysis-review-2025/issues/49
   
 - **Change:** PDF rendering from HTML fixed.  
   **Who:** @junliliu1  
-  **Evidence:** PR:
+  **Evidence:** PR:PR [#63](https://github.com/junliliu1/wine_quality_predictor/pull/63).
 
 - **Change:** HTML rendering Improved - all images are rendering correctly  
   **Who:** @Purityj  
